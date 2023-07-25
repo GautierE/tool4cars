@@ -20,7 +20,7 @@ $clientCars = array_filter($cars, function ($car) {
     </thead>
     <tbody>
         <?php foreach ($clientCars as $car) { ?>
-            <tr>
+            <tr data-car-id=<?php echo $car["id"]; ?>>
                 <td><?php echo $car["modelName"]; ?></td>
                 <td><?php echo $car["brand"]; ?></td>
                 <td><?php echo date("Y", $car["year"]); ?></td>

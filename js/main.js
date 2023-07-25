@@ -16,6 +16,7 @@ $(document).ready(function () {
       success: function (data) {
         $(".dynamic-div").html(data);
         setCookie("clientId", selectedClient, 30);
+        setupCarDetailsClick();
       },
       error: function (error) {
         if (error.status === 404) {
@@ -32,4 +33,31 @@ $(document).ready(function () {
   $("#clientSelect").on("change", function () {
     updateClientView();
   });
+
+  function setupCarDetailsClick() {
+    $(".dynamic-div table tr").on("click", function () {
+      let carId = $(this).data("car-id");
+      loadCarDetails(carId);
+    });
+  }
+
+  function loadCarDetails(carId) {
+    $.ajax({
+      url: `edit.php?id=${carId}`,
+      type: "GET",
+      dataType: "html",
+      success: function (data) {
+        if ($("#carDetail").length) {
+          $("#carDetail").remove();
+        }
+
+        $(".dynamic-div").append(data);
+      },
+      error: function () {
+        $(".dynamic-div").append(
+          "<p>Failed to load car details, try again.</p>"
+        );
+      },
+    });
+  }
 });

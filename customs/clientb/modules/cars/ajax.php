@@ -32,7 +32,7 @@ function getGarageTitle($garageId, $garages)
     </thead>
     <tbody>
         <?php foreach ($clientCars as $car) { ?>
-            <tr>
+            <tr data-car-id=<?php echo $car["id"]; ?>>
                 <td><?php echo strtolower($car["modelName"]); ?></td>
                 <td><?php echo $car["brand"]; ?></td>
                 <td><?php echo getGarageTitle($car["garageId"], $garages); ?></td>
