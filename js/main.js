@@ -35,10 +35,13 @@ $(document).ready(function () {
   });
 
   function setupCarDetailsClick() {
-    $(".dynamic-div table tr").on("click", function () {
-      let carId = $(this).data("car-id");
-      loadCarDetails(carId);
-    });
+    $(".dynamic-div > div.car-list > table tbody > tr").on(
+      "click",
+      function () {
+        let carId = $(this).data("car-id");
+        loadCarDetails(carId);
+      }
+    );
   }
 
   function loadCarDetails(carId) {
