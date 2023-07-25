@@ -33,3 +33,15 @@
   height: auto;
   object-fit: contain;
 }
+
+@media (max-width: 1000px) {
+  .garage-list {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .garage-card {
+    max-width: 80%;
+    max-height: 600px;
+  }
+}
