@@ -1,0 +1,61 @@
+.list-title {
+  text-align: center;
+}
+
+.car-list {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 0 10px;
+  justify-content: center;
+}
+
+.car-card {
+  margin: 5px 10px;
+  background-color: var(--secondary-color);
+  min-width: 22%;
+  max-width: 22%;
+  max-height: 400px;
+  border-radius: 10px;
+  padding-bottom: 20px;
+  cursor: pointer;
+}
+
+.car-card > .car-title {
+  margin-top: 10px;
+  margin-left: 5px;
+  font-size: 21px;
+  font-weight: bold;
+}
+
+.car-card > .car-detail {
+  margin-top: 10px;
+  margin-left: 5px;
+  font-size: 18px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.car-image {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+#switchButton {
+  cursor: pointer;
+  color: white;
+  font-size: 16px;
+  background-color: var(--secondary-color);
+  padding: 10px 25px;
+  border: 2px solid;
+  border-color: var(--accent-color);
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+#switchButton:hover {
+  scale: 0.98;
+}

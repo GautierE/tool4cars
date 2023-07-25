@@ -1,0 +1,81 @@
+:root {
+  /* Primary Colors */
+  --primary-color: #1d1c22;
+
+  /* Secondary Colors */
+  --secondary-color: #161616;
+
+  /* Accent Colors */
+  --accent-color: #e8d5b5;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  color: white;
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Roboto", sans-serif;
+}
+
+p {
+  font-family: "Roboto", sans-serif;
+}
+
+.main-container {
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  background-color: var(--primary-color);
+}
+
+.dynamic-div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.select-container {
+  padding-top: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+#clientSelect {
+  font-size: 22px;
+  width: 70%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  background-color: var(--secondary-color);
+  border: 3px solid;
+  border-color: var(--accent-color);
+  border-radius: 10px;
+  user-select: none;
+}
+
+#clientSelect > div {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  cursor: pointer;
+  width: 100%;
+  text-align: center;
+}
+
+#clientSelect > div:not(.selected-client):hover {
+  background-color: #252525;
+}
+
+.selected-client {
+  background-color: var(--accent-color);
+  color: black;
+}
