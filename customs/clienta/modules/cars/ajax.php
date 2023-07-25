@@ -16,41 +16,38 @@ $clientCars = array_filter($cars, function ($car) {
     }
 </style>
 
-<h1>Client A cars</h1>
+<h1 class="list-title">Client A cars</h1>
 
 <div class="car-list">
-    <table>
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Brand</th>
-                <th>Year</th>
-                <th>Power</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php foreach ($clientCars as $car) { ?>
-                <?php
-                $currentYear = date("Y");
-                $carYear = date("Y", $car["year"]);
-                $isOlderThan10Years = ($currentYear - $carYear) > 10;
-                $isYoungerThan2Years = ($currentYear - $carYear) < 2;
-                $cssClass = "";
+    <?php foreach ($clientCars as $car) { ?>
+        <?php
+        $currentYear = date("Y");
+        $carYear = date("Y", $car["year"]);
+        $isOlderThan10Years = ($currentYear - $carYear) > 10;
+        $isYoungerThan2Years = ($currentYear - $carYear) < 2;
+        $cssClass = "car-card ";
 
-                if ($isOlderThan10Years) {
-                    $cssClass = "older-than-10-years";
-                } elseif ($isYoungerThan2Years) {
-                    $cssClass = "younger-than-2-years";
-                }
-                ?>
+        if ($isOlderThan10Years) {
+            $cssClass = $cssClass . "older-than-10-years";
+        } elseif ($isYoungerThan2Years) {
+            $cssClass = $cssClass . "younger-than-2-years";
+        }
+        ?>
 
-                <tr data-car-id=<?php echo $car["id"]; ?> class="<?php echo $cssClass; ?>">
-                    <td><?php echo $car["modelName"]; ?></td>
-                    <td><?php echo $car["brand"]; ?></td>
-                    <td><?php echo date("Y", $car["year"]); ?></td>
-                    <td><?php echo $car["power"]; ?></td>
-                </tr>
-            <?php } ?>
-        </tbody>
-    </table>
+        <div data-car-id=<?php echo $car["id"]; ?> class="<?php echo $cssClass; ?>">
+
+            <img class="car-image" src="<?php echo $car["imgPath"]; ?>" alt="car" />
+
+            <div class="car-title">
+                <div><?php echo $car["modelName"]; ?></div>
+            </div>
+            <div class="car-detail">
+                <div><?php echo $car["brand"]; ?></div>
+                |
+                <div><?php echo date("Y", $car["year"]); ?></div>
+                |
+                <div><?php echo $car["power"]; ?></div>
+            </div>
+        </div>
+    <?php } ?>
 </div>

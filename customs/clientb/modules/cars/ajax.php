@@ -24,56 +24,38 @@ function getGarageTitle($garageId, $garages)
 }
 ?>
 
-<h1>Client B</h1>
-
-<div>
-    <button id="carListButton">Show Car List</button>
-    <button id="garageListButton">Show Garage List</button>
-</div>
-
+<h1 class="list-title">Client B</h1>
+<button id="switchButton"></button>
 
 <div class="car-list">
-    <h2>Cars List</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Brand</th>
-                <th>Garage</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php foreach ($clientCars as $car) { ?>
-                <tr data-car-id=<?php echo $car["id"]; ?>>
-                    <td><?php echo strtolower($car["modelName"]); ?></td>
-                    <td><?php echo $car["brand"]; ?></td>
-                    <td><?php echo getGarageTitle($car["garageId"], $garages); ?></td>
-                </tr>
-            <?php } ?>
-        </tbody>
-    </table>
+    <?php foreach ($clientCars as $car) { ?>
+        <div class="car-card" data-car-id=<?php echo $car["id"]; ?>>
+            <img class="car-image" src="<?php echo $car["imgPath"]; ?>" alt="car" />
+
+            <div class="car-title">
+                <div><?php echo $car["modelName"]; ?></div>
+            </div>
+            <div class="car-detail">
+                <div><?php echo $car["brand"]; ?></div>
+                |
+                <div><?php echo getGarageTitle($car["garageId"], $garages); ?></div>
+            </div>
+        </div>
+    <?php } ?>
 </div>
 
 <div id="garageList" style="display: none;">
-    <h2>Garages List</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>Garage Title</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php foreach ($clientGarages as $garage) { ?>
-                <tr data-garage-id=<?php echo $garage["id"]; ?>>
-                    <td><?php echo $garage["title"]; ?></td>
-                </tr>
-            <?php } ?>
-        </tbody>
-    </table>
+    <?php foreach ($clientGarages as $garage) { ?>
+        <div class="garage-card" data-garage-id=<?php echo $garage["id"]; ?>>
+            <img class="garage-image" src="public/images/garage.jpg" alt="garage" />
+            <div class="garage-title">
+                <div>Garage : <?php echo $garage["title"]; ?></div>
+            </div>
+        </div>
+    <?php } ?>
 </div>
 
 <div id="garageDetails">
 </div>
 
-<script src="js/clientb.js">
-</script>
+<script src="js/clientb.js"></script>

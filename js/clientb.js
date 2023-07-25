@@ -2,26 +2,26 @@ function toggleViews(showCars) {
   $("#carDetail").remove();
   $("#garageDetail").remove();
   if (showCars) {
+    $("#switchButton").text("Show Garage List");
     $(".car-list").show();
     $("#garageList").hide();
   } else {
+    $("#switchButton").text("Show Car List");
     $(".car-list").hide();
     $("#garageList").show();
   }
 }
 
 $(document).ready(function () {
-  toggleViews(true);
+  let showCars = true;
+  toggleViews(showCars);
 
-  $("#carListButton").click(function () {
-    toggleViews(true);
+  $("#switchButton").click(function () {
+    showCars = !showCars;
+    toggleViews(showCars);
   });
 
-  $("#garageListButton").click(function () {
-    toggleViews(false);
-  });
-
-  $("#garageList > table > tbody > tr").click(function () {
+  $("#garageList > div.garage-card").click(function () {
     const garageId = $(this).data("garage-id");
     loadGarageDetails(garageId);
   });

@@ -7,25 +7,22 @@ $clientCars = array_filter($cars, function ($car) {
 });
 ?>
 
-<h1>Client C cars</h1>
+<h1 class="list-title">Client C cars</h1>
 
 <div class="car-list">
-    <table>
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Brand</th>
-                <th>Color</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php foreach ($clientCars as $car) { ?>
-                <tr data-car-id=<?php echo $car["id"]; ?>>
-                    <td><?php echo $car["modelName"]; ?></td>
-                    <td><?php echo $car["brand"]; ?></td>
-                    <td style="background-color: <?php echo $car["colorHex"]; ?>"></td>
-                </tr>
-            <?php } ?>
-        </tbody>
-    </table>
+    <?php foreach ($clientCars as $car) { ?>
+        <div data-car-id=<?php echo $car["id"]; ?> class="car-card">
+
+            <img class="car-image" src="<?php echo $car["imgPath"]; ?>" alt="car" />
+
+            <div class="car-title">
+                <div><?php echo $car["modelName"]; ?></div>
+            </div>
+            <div class="car-detail">
+                <div><?php echo $car["brand"]; ?></div>
+                |
+                <div style="width: 30px; height: 30px; background-color: <?php echo $car["colorHex"]; ?>"></div>
+            </div>
+        </div>
+    <?php } ?>
 </div>
